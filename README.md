@@ -1,4 +1,4 @@
-# Deskrips
+# Deskripsi
 
 Project Laravel ERP kelompok 23
 
