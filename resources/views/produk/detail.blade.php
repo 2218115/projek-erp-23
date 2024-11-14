@@ -23,8 +23,8 @@
                                 <div class="mb-3">
                                     <label for="nama_produk" class="form-label">Nama Produk</label>
                                     <input type="text" class="form-control @error('nama_produk') is-invalid @enderror"
-                                        id="nama_produk" name="nama_produk"
-                                        value="{{ old('nama_produk', $produk->nama_produk) }}" disabled />
+                                        id="nama_produk" name="nama_produk" value="{{ old('nama_produk', $produk->nama) }}"
+                                        disabled />
                                     @error('nama_produk')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -34,7 +34,7 @@
                                     <input type="text"
                                         class="form-control @error('kategori_produk') is-invalid @enderror"
                                         id="kategori_produk" name="kategori_produk"
-                                        value="{{ old('kategori_produk', $produk->kategori_produk) }}" disabled />
+                                        value="{{ old('kategori_produk', $produk->kategori_produk->nama) }}" disabled />
                                     @error('kategori_produk')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -42,7 +42,7 @@
                                 <div class="mb-3">
                                     <label for="ukuran" class="form-label">Ukuran</label>
                                     <input type="text" class="form-control @error('ukuran') is-invalid @enderror"
-                                        id="ukuran" name="ukuran" value="{{ old('ukuran', $produk->ukuran) }}"
+                                        id="ukuran" name="ukuran" value="{{ old('ukuran', $produk->ukuran->nama) }}"
                                         disabled />
                                     @error('ukuran')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -93,7 +93,8 @@
                                     <label for="gambar" class="form-label">Masukan Gambar</label>
                                     <div class="border rounded d-flex align-items-center justify-content-center mb-2 ratio ratio-1x1 overflow-hidden"
                                         style="height: 11.4rem; width: 11.4rem;">
-                                        <img id="gambar-preview" src="{{ asset('storage/' . $produk->gambar) }}"
+                                        <img id="gambar-preview"
+                                            src="{{ asset('storage/gambar_produk/' . $produk->gambar) }}"
                                             alt="Preview Gambar" class="img-fluid" style="display: block;">
                                     </div>
                                     <input type="file" class="form-control @error('gambar') is-invalid @enderror"
@@ -133,10 +134,10 @@
                         </div>
 
                         <div class="d-flex justify-content-end gap-2">
-                            <!-- Add Edit and Delete buttons -->
                             <a href="{{ url('produk/' . $produk->id . '/edit') }}" class="btn btn-warning btn-md">
                                 <i class="ti ti-edit"></i> Edit
                             </a>
+
                             <form action="{{ url('produk/' . $produk->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
@@ -144,7 +145,7 @@
                                     <i class="ti ti-trash"></i> Delete
                                 </button>
                             </form>
-                            <!-- Back button -->
+
                             <a href="{{ url('produk') }}" class="btn btn-secondary btn-md">Kembali</a>
                         </div>
                     </form>

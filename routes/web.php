@@ -27,4 +27,5 @@ Route::prefix('produk')->group(function () {
     Route::post('tambah', [ProdukController::class, 'store']);
     Route::get('{produk_id}/edit', [ProdukController::class, 'edit']);
     Route::get('{produk_id}', [ProdukController::class, 'show']);
+    Route::delete('{produk_id}', [ProdukController::class, 'destroy']);
 });

@@ -14,7 +14,11 @@
             <div class="card w-100">
                 <div class="card-body">
 
-                    <form action="{{ url('produk') }}" method="POST" enctype="multipart/form-data">
+                    @livewire('produk-form', [
+                        'produk_id' => null,
+                    ])
+
+                    {{-- <form action="{{ url('produk') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Kolom Kiri -->
@@ -131,7 +135,7 @@
                             <a href="{{ url('produk') }}" class="btn btn-secondary w-48">Batal</a>
                             <button type="submit" class="btn btn-primary w-48">Simpan Produk</button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
@@ -139,15 +143,4 @@
 @endsection
 
 @section('script')
-    <script>
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('gambar-preview');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
 @endsection

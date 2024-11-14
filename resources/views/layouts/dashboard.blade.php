@@ -7,6 +7,8 @@
     <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}" />
+
+    @livewireStyles
 </head>
 
 <body>
@@ -188,7 +190,10 @@
     <script src="{{ asset('/js/app.min.js') }}"></script>
     <script src="{{ asset('/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('/libs/simplebar/dist/simplebar.js') }}"></script>
+
     @yield('script')
+
+    @livewireScripts
 
 </body>
 
