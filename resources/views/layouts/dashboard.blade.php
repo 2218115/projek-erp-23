@@ -101,7 +101,7 @@
                         </li>
 
                         <li class="sidebar-item {{ Request::is('request-for-quotation*') ? 'selected' : '' }}">
-                            <a class="sidebar-link" href="{{ url('request-for-quotation') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('rfq') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-invoice"></i>
                                 </span>

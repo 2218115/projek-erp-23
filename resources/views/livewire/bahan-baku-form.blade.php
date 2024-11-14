@@ -4,39 +4,35 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="nama_produk" class="form-label">Nama Produk</label>
-                    <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk"
-                        name="nama_produk" wire:model.live="nama_produk" />
-                    @error('nama_produk')
+                    <label for="nama" class="form-label">Nama Bahan Baku</label>
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
+                        name="nama" wire:model.live="nama" />
+                    @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="kategori_produk" class="form-label">Kategori Produk</label>
-
-                    <select class="form-select @error('kategori_produk') is-invalid @enderror" id="kategori_produk"
-                        name="kategori_produk" wire:model.live="kategori_produk">
-                        <option value="">Pilih Kategori Produk</option>
-                        @foreach ($kategori_produk_list as $kategori_produk)
-                            <option value="{{ $kategori_produk->id }}"> {{ $kategori_produk->nama }}</option>
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <select class="form-select @error('kategori') is-invalid @enderror" id="kategori" name="kategoriba"
+                        wire:model.live="kategori">
+                        <option value="">Pilih Kategori</option>
+                        @foreach ($kategori_list as $kategori)
+                            <option value="{{ $kategori->id }}"> {{ $kategori->nama }}</option>
                         @endforeach
                     </select>
-
-                    @error('kategori_produk')
+                    @error('kategori')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="ukuran" class="form-label">Ukuran</label>
-
                     <select class="form-select @error('ukuran') is-invalid @enderror" id="ukuran" name="ukuran"
                         wire:model.live="ukuran">
-                        <option value="">Pilih Ukuran Produk</option>
-                        @foreach ($ukuran_produk_list as $ukuran)
+                        <option value="">Pilih Ukuran</option>
+                        @foreach ($ukuran_list as $ukuran)
                             <option value="{{ $ukuran->id }}"> {{ $ukuran->nama }}</option>
                         @endforeach
                     </select>
-
                     @error('ukuran')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -46,17 +42,6 @@
                     <input type="text" class="form-control @error('model') is-invalid @enderror" id="model"
                         name="model" wire:model.live="model" />
                     @error('model')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="garansi" class="form-label">Garansi</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control @error('garansi') is-invalid @enderror" id="garansi"
-                            name="garansi" wire:model.live="garansi" />
-                        <span class="input-group-text">/ bulan</span>
-                    </div>
-                    @error('garansi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -82,22 +67,17 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="gambar" class="form-label">Masukan Gambar</label>
-
-
                     <div class="border rounded d-flex align-items-center justify-content-center mb-2 ratio ratio-1x1 overflow-hidden"
                         style="height: 11.4rem; width: 11.4rem;">
-
                         @if ($gambar)
                             <img id="gambar-preview"
-                                src="{{ is_string($gambar) ? asset('/gambar_produk/' . $gambar) : $gambar->temporaryUrl() }}"
+                                src="{{ is_string($gambar) ? asset('/gambar_bahan_baku/' . $gambar) : $gambar->temporaryUrl() }}"
                                 alt="Preview Gambar" class="img-fluid">
                         @endif
-
                         <span>
                             <i class="ti ti-picture"></i>
                         </span>
                     </div>
-
                     <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar"
                         name="gambar" wire:model.live="gambar" accept="image/*" />
                     @error('gambar')
@@ -121,20 +101,20 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="harga_jual" class="form-label">Harga Jual</label>
-                    <input type="number" class="form-control @error('harga_jual') is-invalid @enderror"
-                        id="harga_jual" name="harga_jual" step="0.01" wire:model.live="harga_jual" />
-                    @error('harga_jual')
+                    <label for="harga_beli" class="form-label">Harga Beli</label>
+                    <input type="number" class="form-control @error('harga_beli') is-invalid @enderror"
+                        id="harga_beli" name="harga_beli" step="0.01" wire:model.live="harga_beli" />
+                    @error('harga_beli')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
         </div>
 
-
         <div class="d-flex justify-content-end gap-4">
-            <a href="{{ url('produk') }}" class="btn btn-secondary w-48">Batal</a>
-            <button type="submit" class="btn btn-primary w-48">Simpan Produk</button>
+            <a href="{{ $bahan_baku_id ? url('bahan-baku/' . $bahan_baku_id) : url('bahan-baku') }}"
+                class="btn btn-secondary w-48">Batal</a>
+            <button type="submit" class="btn btn-primary w-48">Simpan Bahan Baku</button>
         </div>
     </form>
 </div>

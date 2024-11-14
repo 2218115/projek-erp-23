@@ -75,6 +75,7 @@ class ProdukForm extends Component
                 $produk->gambar = $nama_file;
             }
 
+            $produk->nama = $this->nama_produk;
             $produk->id_kategori = $this->kategori_produk;
             $produk->id_ukuran = $this->ukuran;
             $produk->model = $this->model;

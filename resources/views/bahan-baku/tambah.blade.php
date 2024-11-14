@@ -3,9 +3,9 @@
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('produk') }}">Produk</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('bahan-baku') }}">Bahan Baku</a></li>
 
-            <li class="breadcrumb-item"><a href="{{ url('produk/tambah') }}">Tambah Produk</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('bahan-baku/tambah') }}">Tambah Bahan Baku</a></li>
         </ol>
     </nav>
 
@@ -14,7 +14,7 @@
             <div class="card w-100">
                 <div class="card-body">
 
-                    @livewire('produk-form', [
+                    @livewire('bahan-baku-form', [
                         'produk_id' => null,
                     ])
 
