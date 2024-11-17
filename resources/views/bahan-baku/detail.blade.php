@@ -154,15 +154,5 @@
 @endsection
 
 @section('script')
-    <script>
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('gambar-preview');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+    <script></script>
 @endsection

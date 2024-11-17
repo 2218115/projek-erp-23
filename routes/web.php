@@ -6,6 +6,7 @@ use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RfqController;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,13 @@ Route::prefix('bahan-baku')->group(function () {
 Route::prefix('bom')->group(function () {
     Route::get('/', [BomController::class, 'index']);
     Route::get('tambah', [BomController::class, 'create']);
+});
+
+Route::prefix('vendor')->group(function () {
+    Route::get('/', [VendorController::class, 'index']);
+    Route::get('/tambah', [VendorController::class, 'create']);
+    Route::get('{vendor_id}', [VendorController::class, 'show']);
+    Route::get('{vendor_id}/edit', [VendorController::class, 'edit']);
 });
 
 Route::prefix('rfq')->group(function () {

@@ -16,7 +16,7 @@ class ProdukList extends Component
 
     public function render()
     {
-        $list_produk = Produk::where('nama', 'like', '%' . $this->search . '%')->simplePaginate(10);
+        $list_produk = Produk::where('nama', 'like', '%' . $this->search . '%')->paginate(10);
 
         return view('livewire.produk-list', [
             "list_produk" => $list_produk,
