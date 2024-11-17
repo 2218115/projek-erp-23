@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\Bom;
 use Livewire\Component;
 
 class BomList extends Component
 {
     public function render()
     {
-        return view('livewire.bom-list');
+        $bom_list = Bom::with('bahan_baku')->get();
+
+        return view('livewire.bom-list', compact('bom_list'));
     }
 }

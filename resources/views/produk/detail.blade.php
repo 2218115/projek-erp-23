@@ -85,6 +85,15 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="mb-3">
+                                    <label for="biaya_produk" class="form-label">Biaya Produk</label>
+                                    <input type="number" class="form-control @error('biaya_produk') is-invalid @enderror"
+                                        id="biaya_produk" name="biaya_produk" step="0.01"
+                                        value="{{ old('barcode', $produk->biaya_produk) }}" disabled />
+                                    @error('biaya_produk')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <!-- Kolom Kanan -->

@@ -25,6 +25,7 @@ class ProdukForm extends Component
     public $deskripsi;
     public $pajak;
     public $harga_jual;
+    public $biaya_produk; // Field baru untuk biaya produk
 
     protected $rules = [
         'nama_produk' => 'min:6',
@@ -38,6 +39,7 @@ class ProdukForm extends Component
         'deskripsi' => 'nullable',
         'pajak' => 'required',
         'harga_jual' => 'required',
+        'biaya_produk' => 'required', // Tambahkan validasi untuk biaya produk
     ];
 
     public function updated($propertyName)
@@ -65,6 +67,7 @@ class ProdukForm extends Component
                 "deskripsi" => $validated["deskripsi"],
                 "pajak" => $validated["pajak"],
                 "harga_jual" => $validated["harga_jual"],
+                "biaya_produk" => $validated["biaya_produk"], // Simpan biaya produk
             ]);
         } else {
             $produk = Produk::find($this->produk_id);
@@ -85,6 +88,7 @@ class ProdukForm extends Component
             $produk->deskripsi = $this->deskripsi;
             $produk->pajak = $this->pajak;
             $produk->harga_jual = $this->harga_jual;
+            $produk->biaya_produk = $this->biaya_produk; // Update biaya produk
 
             $produk->save();
         }
@@ -111,6 +115,7 @@ class ProdukForm extends Component
             $this->deskripsi = $produk->deskripsi;
             $this->pajak = $produk->pajak;
             $this->harga_jual = $produk->harga_jual;
+            $this->biaya_produk = $produk->biaya_produk; // Set biaya produk saat mount
         }
     }
 

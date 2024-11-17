@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Bom;
+use App\Models\BomDetail;
 
 class BomController extends Controller
 {
     public function index()
     {
+        // dd(Bom::with('produk')->with('bahan_baku')->get());
+
         return view('bom.index');
     }
 

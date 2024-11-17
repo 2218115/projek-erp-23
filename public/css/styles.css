@@ -17192,3 +17192,32 @@ html {
 body {
     overflow-y: scroll;
 }
+
+/* Select With Search */
+
+.select-container {
+    position: relative;
+}
+
+.select-items-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-height: 24rem;
+    border-radius: 8px;
+    overflow-y: scroll;
+    border: 1px solid #f0f0f0;
+    margin-top: 0.2rem;
+    background-color: white;
+    z-index: 999999999;
+}
+
+.select-item {
+    padding: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.select-item:hover {
+    background-color: #d0e6f2;
+}

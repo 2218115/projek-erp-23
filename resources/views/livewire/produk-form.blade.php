@@ -76,6 +76,14 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="biaya_produk" class="form-label">Biaya Produk</label>
+                    <input type="number" class="form-control @error('biaya_produk') is-invalid @enderror"
+                        id="biaya_produk" name="biaya_produk" step="0.01" wire:model.live="biaya_produk" />
+                    @error('biaya_produk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
             <!-- Kolom Kanan -->
@@ -106,8 +114,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="4"
-                        wire:model.live="deskripsi">{{ old('deskripsi') }}</textarea>
+                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi"
+                        rows="4" wire:model.live="deskripsi">{{ old('deskripsi') }}</textarea>
                     @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
