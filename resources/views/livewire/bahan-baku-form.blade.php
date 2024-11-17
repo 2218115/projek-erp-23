@@ -111,10 +111,10 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-end gap-4">
+        <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-primary w-48">Simpan Bahan Baku</button>
             <a href="{{ $bahan_baku_id ? url('bahan-baku/' . $bahan_baku_id) : url('bahan-baku') }}"
                 class="btn btn-secondary w-48">Batal</a>
-            <button type="submit" class="btn btn-primary w-48">Simpan Bahan Baku</button>
         </div>
     </form>
 </div>

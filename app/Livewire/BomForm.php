@@ -10,9 +10,11 @@ use Livewire\Component;
 
 class BomForm extends Component
 {
+    public $bom_id;
+
     public $produk_search;
 
-    protected $queryString = ['produk_search'];
+    public $bahan_baku_list;
 
     public $nama_bom;
     public $kuantitas;
@@ -43,50 +45,113 @@ class BomForm extends Component
     {
         $validated = $this->validate();
 
-        $grand_total = 0;
-        for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
-            $grand_total += $this->bom_item_list[$index]['harga_bom'];
-        }
+        if ($this->bom_id) {
+            $bom = Bom::find($this->bom_id);
 
-        $bom = Bom::create([
-            "nama" => $validated["nama_bom"],
-            "kuantitas" => $validated["kuantitas"],
-            "id_produk" => $validated["produk"],
-            "referensi_internal" => $validated["referensi_internal"],
-            "grand_total" => $grand_total,
-        ]);
+            $grand_total = 0;
+            for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
+                $grand_total += $this->bom_item_list[$index]['harga_bom'];
+            }
 
+            $bom->nama = $validated["nama_bom"];
+            $bom->kuantitas =  $validated["kuantitas"];
+            $bom->id_produk =  $validated["produk"];
+            $bom->referensi_internal =  $validated["referensi_internal"];
+            $bom->grand_total =  $grand_total;
 
-        for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
-            BomDetail::create([
-                "id_bom" => $bom->id,
-                "id_bahan_baku" =>  $this->bom_item_list[$index]["bahan_baku"],
-                "kuantitas" => $this->bom_item_list[$index]["kuantitas"],
-                "harga_asli" => $this->bom_item_list[$index]["harga_asli"],
-                "harga_bom" => $this->bom_item_list[$index]["harga_asli"] * $this->bom_item_list[$index]["kuantitas"],
+            $bom->save();
+
+            // NOTE: hapus semua bom_detail yang lama
+            BomDetail::where('id_bom', $bom->id)->delete();
+
+            // NOTE: buat bom_detail yang baru
+            for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
+                BomDetail::create([
+                    "id_bom" => $bom->id,
+                    "id_bahan_baku" =>  $this->bom_item_list[$index]["bahan_baku"],
+                    "kuantitas" => $this->bom_item_list[$index]["kuantitas"],
+                    "harga_asli" => $this->bom_item_list[$index]["harga_asli"],
+                    "harga_bom" => $this->bom_item_list[$index]["harga_asli"] * $this->bom_item_list[$index]["kuantitas"],
+                ]);
+            }
+        } else {
+            $grand_total = 0;
+            for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
+                $grand_total += $this->bom_item_list[$index]['harga_bom'];
+            }
+
+            $bom = Bom::create([
+                "nama" => $validated["nama_bom"],
+                "kuantitas" => $validated["kuantitas"],
+                "id_produk" => $validated["produk"],
+                "referensi_internal" => $validated["referensi_internal"],
+                "grand_total" => $grand_total,
             ]);
+
+
+            for ($index = 0; $index < sizeof($this->bom_item_list); $index++) {
+                BomDetail::create([
+                    "id_bom" => $bom->id,
+                    "id_bahan_baku" =>  $this->bom_item_list[$index]["bahan_baku"],
+                    "kuantitas" => $this->bom_item_list[$index]["kuantitas"],
+                    "harga_asli" => $this->bom_item_list[$index]["harga_asli"],
+                    "harga_bom" => $this->bom_item_list[$index]["harga_asli"] * $this->bom_item_list[$index]["kuantitas"],
+                ]);
+            }
         }
 
         return redirect("/bom");
     }
 
-    public function mount()
+    public function mount($bom_id)
     {
-        $this->kuantitas = 1;
+        $this->bom_id = $bom_id;
+
+        if ($this->bom_id) {
+            $bom = Bom::find($this->bom_id);
+            if (!$bom) {
+                abort(404, 'Bom Tidak di temukan');
+            }
+            $this->nama_bom = $bom->nama;
+            $this->kuantitas = $bom->kuantitas;
+
+            $this->produk_search = $bom->produk->nama;
+            $this->produk = $bom->produk->id;
+
+            $this->referensi_internal = $bom->referensi_internal;
+            $this->harga_jual = $bom->produk->harga_jual;
+            $this->biaya_produk = $bom->produk->biaya_produk;
+
+            foreach ($bom->bom_detail as $index => $bom_item) {
+                $this->bom_item_list[$index]['harga_bom'] = $bom_item->harga_bom;
+                $this->bom_item_list[$index]['harga_asli'] = $bom_item->harga_asli;
+                $this->bom_item_list[$index]['kuantitas'] = $bom_item->kuantitas;
+                $this->bom_item_list[$index]['bahan_baku'] = $bom_item->bahan_baku->id;
+                $this->bom_item_list[$index]['nama_bahan_baku'] = $bom_item->bahan_baku->nama;
+            }
+
+            $this->total_biaya = $bom->grand_total;
+            $this->interval_biaya = $bom->grand_total - $bom->produk->biaya_produk;
+        } else {
+            $this->kuantitas = 1;
+        }
     }
 
     public function render()
     {
         $produk_list = Produk::where('nama', 'like', '%' . $this->produk_search . '%')->get();
-        $bahan_baku_list = BahanBaku::all();
 
-        return view('livewire.bom-form', compact('produk_list', 'bahan_baku_list'));
+        return view('livewire.bom-form', [
+            'produk_list' => $produk_list,
+            'bahan_baku_list' => $this->bahan_baku_list
+        ]);
     }
 
     public function tambah_bom_item()
     {
         array_push($this->bom_item_list, [
-            'bahan_baku' => 'asdafsd',
+            'bahan_baku' => '',
+            'nama_bahan_baku' => '',
             'kuantitas' => 1,
             'harga_asli' => '0',
             'harga_bom' => '0',
@@ -145,5 +210,14 @@ class BomForm extends Component
 
         $this->total_biaya = $total_biaya;
         $this->interval_biaya =  $this->biaya_produk - $total_biaya;
+    }
+
+    public function bahan_baku_search($query)
+    {
+        if ($query != '') {
+            $this->bahan_baku_list = BahanBaku::where('nama', 'like', '%' . $query . '%')->get();
+        } else {
+            $this->bahan_baku_list = BahanBaku::all();
+        }
     }
 }

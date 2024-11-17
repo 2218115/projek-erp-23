@@ -44,6 +44,8 @@ Route::prefix('bahan-baku')->group(function () {
 Route::prefix('bom')->group(function () {
     Route::get('/', [BomController::class, 'index']);
     Route::get('tambah', [BomController::class, 'create']);
+    Route::get('{bom_id}', [BomController::class, 'show']);
+    Route::get('{bom_id}/edit', [BomController::class, 'edit']);
 });
 
 Route::prefix('vendor')->group(function () {

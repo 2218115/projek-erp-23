@@ -1,6 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('bom') }}">BOM</a></li>
+        </ol>
+    </nav>
+
     <div class="row">
         <div class="col">
             <div class="card w-100">

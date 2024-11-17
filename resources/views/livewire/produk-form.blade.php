@@ -139,10 +139,10 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-end gap-4">
+        <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-primary w-48">Simpan Produk</button>
             <a href="{{ $produk_id ? url('produk/' . $produk_id) : url('produk') }}"
                 class="btn btn-secondary w-48">Batal</a>
-            <button type="submit" class="btn btn-primary w-48">Simpan Produk</button>
         </div>
     </form>
 </div>

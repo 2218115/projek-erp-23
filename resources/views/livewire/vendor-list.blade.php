@@ -18,7 +18,7 @@
                     <th scope="col"><i class="ti ti-phone"></i> Nomor Telepon</th>
                     <th scope="col"><i class="ti ti-device-mobile"></i> Nomor Telepon Mobile</th>
                     <th scope="col"><i class="ti ti-mail"></i> Email</th>
-                    <th scope="col"><i class="ti ti-settings"></i> Aksi</th>
+                    {{-- <th scope="col"><i class="ti ti-settings"></i> Aksi</th> --}}
                 </tr>
             </thead>
             <tbody>

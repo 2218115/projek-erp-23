@@ -25,15 +25,17 @@
                     <label for="provinsi" class="form-label">Provinsi</label>
 
                     <div class="select-container mb-3">
-                        <input type="search" class="form-select @error('provinsi') is-invalid @enderror"
-                            id="provinsi_search" name="provinsi_search" x-on:click="open = true" x-ref="provinsi_search"
-                            wire:model.live="provinsi_search" wire:keyup="load_provinsi" x-on:keydown="open = true" />
+                        <input type="text" class="form-select @error('provinsi') is-invalid @enderror"
+                            id="provinsi_search" name="provinsi_search" x-on:click="open = true; $wire.load_provinsi();"
+                            x-ref="provinsi_search" wire:model.live.debounce.250ms="provinsi_search"
+                            wire:keyup="load_provinsi" x-on:keydown="open = true" />
                         @error('provinsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
                         <div class="select-items-container card" x-show="open" x-transition
-                            x-on:click.outside="open = false" style="display: none;">
+                            x-on:click.outside="open = false; if($wire.provinsi_search == '') { $wire.provinsi = '';}"
+                            style="display: none;">
                             <div>
                                 <div class="select-item" wire:loading>
                                     Memuat...
@@ -46,6 +48,8 @@
                                                 x-on:click="open = false;
                                                     $wire.provinsi_search = '{{ $provinsi->name }}';
                                                     $wire.provinsi = '{{ $provinsi->code }}';
+                                                    $wire.kota_search = '';
+                                                    $wire.kota = '';
                                                     $wire.load_kota();
                                                 ">
                                                 <div class="w-100">{{ $provinsi->name }}</div>
@@ -67,15 +71,16 @@
                     <label for="kota" class="form-label">Kota</label>
 
                     <div class="select-container mb-3">
-                        <input type="search" class="form-select @error('kota') is-invalid @enderror" id="kota_search"
-                            name="kota_search" x-on:click="open = true" x-ref="kota_search"
-                            wire:model.live="kota_search" wire:keyup="load_kota" x-on:keydown="open = true" />
+                        <input type="text" class="form-select @error('kota') is-invalid @enderror" id="kota_search"
+                            name="kota_search" x-on:click="open = true; $wire.load_kota()" x-ref="kota_search"
+                            wire:model.live.debounce.250ms="kota_search" wire:keyup="load_kota"
+                            x-on:keydown="open = true" />
                         @error('kota')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
                         <div class="select-items-container card" x-show="open" x-transition
-                            x-on:click.outside="open = false" style="display: none;">
+                            x-on:click.outside="open = false;" style="display: none;">
                             <div>
                                 <div class="select-item" wire:loading>
                                     Memuat...

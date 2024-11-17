@@ -22,7 +22,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 
-                        <div class="select-items-container" x-show="open" x-transition
+                        <div class="select-items-container card" x-show="open" x-transition
                             x-on:click.outside="open = false">
                             <div>
                                 <div class="select-item" wire:loading>
@@ -126,13 +126,16 @@
                         <td>{{ $index + 1 }}</td>
                         <td>
                             <div class="select-container" x-data="{ open: false }">
-                                <input type="search" class="form-select @error('produk') is-invalid @enderror"
-                                    id="bahan_baku" name="bahan_baku" x-on:click="open = true" x-ref="bahan_baku" />
-                                @error('produk')
+                                <input type="search" class="form-select @error('bahan_baku') is-invalid @enderror"
+                                    id="bahan_baku" name="bahan_baku"
+                                    x-on:click="open = true; $wire.bahan_baku_search($event.target.value);"
+                                    x-ref="bahan_baku" x-on:keyup="$wire.bahan_baku_search($event.target.value)"
+                                    value="{{ $bom_item_list[$index]['nama_bahan_baku'] ? $bom_item_list[$index]['nama_bahan_baku'] : '' }}" />
+                                @error('bahan_baku')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
-                                <div class="select-items-container" x-show="open" x-transition
+                                <div class="select-items-container card" x-show="open" x-transition
                                     x-on:click.outside="open = false">
                                     <div>
                                         <div class="select-item" wire:loading>
@@ -140,7 +143,7 @@
                                         </div>
 
                                         <div wire:loading:remove>
-                                            @if ($bahan_baku_list->count() > 0)
+                                            @if ($bahan_baku_list ? $bahan_baku_list->count() > 0 : false)
                                                 @foreach ($bahan_baku_list as $bahan_baku)
                                                     <div class="select-item"
                                                         x-on:click="open = false;
@@ -166,7 +169,7 @@
                                                 @endforeach
                                             @else
                                                 <div class="select-item">
-                                                    Tidak di temukan Produk
+                                                    Tidak di temukan Bahan Baku
                                                 </div>
                                             @endif
                                         </div>

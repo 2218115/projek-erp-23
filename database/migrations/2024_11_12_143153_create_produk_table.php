@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->double('pajak');
             $table->double('harga_jual');
+            $table->double('biaya_produk');
             $table->timestamps();
             $table->foreign('id_kategori')->references('id')->on('kategori_produk');
             $table->foreign('id_ukuran')->references('id')->on('ukuran');

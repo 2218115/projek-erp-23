@@ -18,4 +18,16 @@ class BomController extends Controller
     {
         return view('bom.tambah');
     }
+
+    public function show($bom_id)
+    {
+        $bom = Bom::find($bom_id);
+
+        return view('bom.detail', compact('bom'));
+    }
+
+    public function edit($bom_id)
+    {
+        return view('bom.edit', compact('bom_id'));
+    }
 }

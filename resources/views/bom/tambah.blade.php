@@ -3,9 +3,9 @@
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('bom') }}">Tambah</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('bom') }}">BOM</a></li>
 
-            <li class="breadcrumb-item"><a href="{{ url('bom/tambah') }}">Tambah BOM</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('bom/tambah') }}">Tambah</a></li>
         </ol>
     </nav>
 

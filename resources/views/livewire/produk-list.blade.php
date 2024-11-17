@@ -85,6 +85,7 @@
                 </div>
             </div>
         @endif
+
         {{ $list_produk->links() }}
     </div>
 </div>
