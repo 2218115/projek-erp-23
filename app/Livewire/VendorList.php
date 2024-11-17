@@ -12,7 +12,7 @@ class VendorList extends Component
 
     public $search = '';
 
-    protected $query = ['search'];
+    protected $queryString = ['search'];
 
     public function mount() {}
 

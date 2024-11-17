@@ -8,8 +8,6 @@
                 <input type="search" name="search" class="form-control w-50" placeholder="Cari Bahan Baku..."
                     wire:model.live="search">
 
-                {{-- <button type="submit" class="btn btn-primary ms-2">Cari</button> --}}
-
                 <a href="{{ url('bahan-baku/tambah') }}" class="btn btn-success">
                     <i class="ti ti-plus-circle"></i> Tambah Bahan Baku
                 </a>
@@ -86,6 +84,6 @@
             </div>
         @endif
 
-        {{-- {{ $bahan_baku_list->links() }} --}}
+        {{ $bahan_baku_list->links() }}
     </div>
 </div>
