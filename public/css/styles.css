@@ -709,8 +709,8 @@ progress {
     --bs-gutter-x: 24px;
     --bs-gutter-y: 0;
     width: 100%;
-    padding-right: calc(var(--bs-gutter-x) * 0.5);
-    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    /* padding-right: calc(var(--bs-gutter-x) * 0.5); */
+    /* padding-left: calc(var(--bs-gutter-x) * 0.5); */
     margin-right: auto;
     margin-left: auto;
 }
@@ -16682,7 +16682,7 @@ fieldset:disabled .btn {
 .app-header .container-sm,
 .app-header .container-xl,
 .app-header .container-xxl {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 0 30px;
 }
@@ -16947,7 +16947,7 @@ fieldset:disabled .btn {
 .body-wrapper > .container-sm,
 .body-wrapper > .container-xl,
 .body-wrapper > .container-xxl {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 24px;
     -webkit-transition: 0.2s ease-in;
@@ -17220,4 +17220,61 @@ body {
 
 .select-item:hover {
     background-color: #d0e6f2;
+}
+
+/* Stepper */
+
+/* Stepper styles */
+.step-item {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    margin-bottom: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Active step styles */
+.step-circle.active {
+    background-color: var(--bs-primary); /* Blue for active step */
+    border-color: var(--bs-primary);
+    color: white;
+}
+
+.step-circle.active i {
+    font-size: 18px;
+    color: white;
+}
+
+.step-item p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: var(--bs-gray-800);
+}
+
+/* Styling for inactive steps */
+.step-circle i {
+    color: var(--bs-gray-400);
+}
+
+.step-item.active p {
+    font-weight: bold;
+}
+
+.step-item p {
+    font-size: 14px;
+}
+
+.bg-red-100 {
+    background-color: #ffe6e6 !important;
 }

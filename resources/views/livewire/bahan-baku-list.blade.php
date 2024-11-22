@@ -41,7 +41,7 @@
         @if ($bahan_baku_list->count() > 0)
             <div class="row">
                 @foreach ($bahan_baku_list as $bahan_baku)
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-2">
                         <a href="{{ url('bahan-baku/' . $bahan_baku->id) }}" class="text-decoration-none text-dark">
                             <div class="card">
                                 <div class="ratio ratio-4x3">
@@ -49,10 +49,15 @@
                                         class="card-img-top" alt="{{ $bahan_baku->nama }}">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $bahan_baku->nama }}</h5>
-                                    <p class="card-text">{{ Str::limit($bahan_baku->deskripsi, 100) }}</p>
+                                    <h6 class="card-title">
+                                        {{ $bahan_baku->referensi_internal ? ' [' . $bahan_baku->referensi_internal . '] ' . $bahan_baku->nama : $bahan_baku->nama }}
+                                    </h6>
+                                    <p class="card-text">{{ Str::limit($bahan_baku->deskripsi, 30) }}</p>
                                     <p class="card-text"><strong>Harga:</strong> Rp
                                         {{ number_format($bahan_baku->harga_beli, 0, ',', '.') }}
+                                    </p>
+                                    <p class="card-text"><strong>Stock:</strong>
+                                        {{ $bahan_baku->stock }}
                                     </p>
 
                                     <div class="d-flex mt-4">

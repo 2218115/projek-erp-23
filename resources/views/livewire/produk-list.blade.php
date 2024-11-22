@@ -43,7 +43,7 @@
         @if ($list_produk->count() > 0)
             <div class="row">
                 @foreach ($list_produk as $produk)
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-2">
                         <a href="{{ url('produk/' . $produk->id) }}" class="text-decoration-none text-dark">
                             <div class="card">
                                 <div class="ratio ratio-4x3">
@@ -51,10 +51,15 @@
                                         class="card-img-top" alt="{{ $produk->nama }}">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $produk->nama }}</h5>
-                                    <p class="card-text">{{ Str::limit($produk->deskripsi, 100) }}</p>
+                                    <h5 class="card-title">
+                                        {{ $produk->referensi_internal ? ' [' . $produk->referensi_internal . '] ' . $produk->nama : $produk->nama }}
+                                    </h5>
+                                    <p class="card-text">{{ Str::limit($produk->deskripsi, 20) }}</p>
                                     <p class="card-text"><strong>Harga:</strong> Rp
                                         {{ number_format($produk->harga_jual, 0, ',', '.') }}
+                                    </p>
+                                    <p class="card-text"><strong>Stock:</strong>
+                                        {{ $produk->stock }}
                                     </p>
 
                                     <div class="d-flex mt-4">

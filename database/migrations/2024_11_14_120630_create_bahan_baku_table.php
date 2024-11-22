@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->double('pajak');
             $table->double('harga_beli');
+            $table->double('stock')->default(0);
             $table->timestamps();
 
             $table->foreign('id_kategori')->references('id')->on('kategori_produk');

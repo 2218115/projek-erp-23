@@ -23,6 +23,7 @@ class BahanBaku extends Model
         "deskripsi",
         "pajak",
         "harga_beli",
+        "stock",
     ];
 
     public function kategori_produk(): HasOne

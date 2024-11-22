@@ -77,8 +77,8 @@
                             <span class="hide-menu">Manufacturing</span>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('manufacturing*') ? 'selected' : '' }}">
-                            <a class="sidebar-link" href="{{ url('manufacturing') }}" aria-expanded="false">
+                        <li class="sidebar-item {{ Request::is('mo*') ? 'selected' : '' }}">
+                            <a class="sidebar-link" href="{{ url('mo') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-clipboard"></i>
                                 </span>
@@ -100,7 +100,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('request-for-quotation*') ? 'selected' : '' }}">
+                        <li class="sidebar-item {{ Request::is('rfq*') ? 'selected' : '' }}">
                             <a class="sidebar-link" href="{{ url('rfq') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-invoice"></i>

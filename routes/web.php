@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\BomController;
+use App\Http\Controllers\ManufacuringController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RfqController;
 use App\Http\Controllers\VendorController;
@@ -30,7 +31,7 @@ Route::prefix('produk')->group(function () {
     Route::get('tambah', [ProdukController::class, 'create']);
     Route::get('{produk_id}/edit', [ProdukController::class, 'edit']);
     Route::get('{produk_id}', [ProdukController::class, 'show']);
-    Route::delete('{produk_id}', [ProdukController::class, 'destroy']);
+    Route::delete('{produk_id}', [ProdukController::class, 'destroy']); // TODO: soft delete
 });
 
 Route::prefix('bahan-baku')->group(function () {
@@ -38,7 +39,15 @@ Route::prefix('bahan-baku')->group(function () {
     Route::get('tambah', [BahanBakuController::class, 'create']);
     Route::get('{produk_id}/edit', [BahanBakuController::class, 'edit']);
     Route::get('{produk_id}', [BahanBakuController::class, 'show']);
-    Route::delete('{produk_id}', [BahanBakuController::class, 'destroy']);
+    Route::delete('{produk_id}', [BahanBakuController::class, 'destroy']); // TODO: soft delete
+});
+
+Route::prefix('mo')->group(function () {
+    Route::get('/', [ManufacuringController::class, 'index']);
+    Route::get('tambah', [ManufacuringController::class, 'create']);
+    Route::get('{produk_id}/edit', [ManufacuringController::class, 'edit']);
+    Route::get('{mo_id}', [ManufacuringController::class, 'show']);
+    Route::delete('{produk_id}', [ManufacuringController::class, 'destroy']);
 });
 
 Route::prefix('bom')->group(function () {
@@ -46,6 +55,7 @@ Route::prefix('bom')->group(function () {
     Route::get('tambah', [BomController::class, 'create']);
     Route::get('{bom_id}', [BomController::class, 'show']);
     Route::get('{bom_id}/edit', [BomController::class, 'edit']);
+    Route::delete('{bom_id}', [BomController::class, 'destroy']); // TODO: soft delete
 });
 
 Route::prefix('vendor')->group(function () {
@@ -53,9 +63,11 @@ Route::prefix('vendor')->group(function () {
     Route::get('/tambah', [VendorController::class, 'create']);
     Route::get('{vendor_id}', [VendorController::class, 'show']);
     Route::get('{vendor_id}/edit', [VendorController::class, 'edit']);
+    Route::delete('{vendor_id}', [VendorController::class, 'destroy']);
 });
 
 Route::prefix('rfq')->group(function () {
     Route::get('/', [RfqController::class, 'index']);
-    Route::post('tamabh', [RfqController::class, 'create']);
+    Route::get('/tambah', [RfqController::class, 'create']);
+    Route::get('{rfq_id}', [RfqController::class, 'show']);
 });

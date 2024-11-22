@@ -71,5 +71,7 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{ $bom_list->links() }}
     </div>
 </div>

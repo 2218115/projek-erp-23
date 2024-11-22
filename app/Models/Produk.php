@@ -25,6 +25,7 @@ class Produk extends Model
         "pajak",
         "harga_jual",
         "biaya_produk",
+        "stock",
     ];
 
     public function kategori_produk(): HasOne
