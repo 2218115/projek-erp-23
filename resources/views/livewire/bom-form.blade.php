@@ -29,7 +29,7 @@
                                     Memuat...
                                 </div>
 
-                                <div wire:loading:remove>
+                                <div wire:loading:remove style="display: none">
                                     @if ($produk_list->count() > 0)
                                         @foreach ($produk_list as $produk)
                                             <div class="select-item"
@@ -142,7 +142,7 @@
                                             Memuat...
                                         </div>
 
-                                        <div wire:loading:remove>
+                                        <div wire:loading:remove style="display: none">
                                             @if ($bahan_baku_list ? $bahan_baku_list->count() > 0 : false)
                                                 @foreach ($bahan_baku_list as $bahan_baku)
                                                     <div class="select-item"

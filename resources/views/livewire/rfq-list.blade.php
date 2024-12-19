@@ -17,7 +17,7 @@
 
         <div class="">
             <a href="{{ url('rfq/tambah') }}" class="btn btn-success">
-                <i class="ti ti-plus-circle"></i> Buat MO
+                <i class="ti ti-plus-circle"></i> Buat RFQ
             </a>
         </div>
     </div>
@@ -35,7 +35,7 @@
             </thead>
             <tbody>
                 @forelse ($rfq_list as $index => $rfq)
-                    <tr x-on:click="window.location.href = '{{ url('mo/' . $rfq->id) }}';" style="cursor: pointer;">
+                    <tr x-on:click="window.location.href = '{{ url('rfq/' . $rfq->id) }}';" style="cursor: pointer;">
                         <td>{{ $index + 1 }}</td>
 
                         <td>{{ $rfq->vendor->nama ?? 'Tidak Ada Produk' }}</td>

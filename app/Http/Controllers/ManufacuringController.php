@@ -22,4 +22,10 @@ class ManufacuringController extends Controller
             'mo_id' => $mo_id,
         ]);
     }
+
+    public function edit($mo_id) {
+        return view('mo.edit', [
+            'mo_id' => $mo_id,
+        ]);
+    }
 }

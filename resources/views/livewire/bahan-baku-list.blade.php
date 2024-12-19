@@ -11,6 +11,9 @@
                 <a href="{{ url('bahan-baku/tambah') }}" class="btn btn-success">
                     <i class="ti ti-plus-circle"></i> Tambah Bahan Baku
                 </a>
+                <a href="{{ url('bahan-baku/report') }}" class="btn btn-secondary">
+                    <i class="ti ti-plus-circle"></i> Report
+                </a>
             </div>
         </div>
     </div>

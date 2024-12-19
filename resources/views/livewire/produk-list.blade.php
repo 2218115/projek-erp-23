@@ -13,6 +13,10 @@
                 <a href="{{ url('produk/tambah') }}" class="btn btn-success">
                     <i class="ti ti-plus-circle"></i> Tambah Produk
                 </a>
+
+                <a href="{{ url('produk/report') }}" class="btn btn-secondary">
+                    <i class="ti ti-plus-circle"></i> Report Produk
+                </a>
             </div>
         </div>
     </div>
