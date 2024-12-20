@@ -114,8 +114,8 @@
                             <span class="hide-menu">Sales</span>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('customers*') ? 'selected' : '' }}">
-                            <a class="sidebar-link" href="{{ url('customers') }}" aria-expanded="false">
+                        <li class="sidebar-item {{ Request::is('customer') ? 'selected' : '' }}">
+                            <a class="sidebar-link" href="{{ url('customer') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-clipboard"></i>
                                 </span>
@@ -123,7 +123,7 @@
                             </a>
                         </li>
 
-                       <li class="sidebar-item {{ Request::is('sales*') ? 'selected' : '' }}">
+                        <li class="sidebar-item {{ Request::is('sales*') ? 'selected' : '' }}">
                             <a class="sidebar-link" href="{{ url('sales') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-clipboard"></i>

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RfqController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,11 @@ Route::prefix('rfq')->group(function () {
     Route::get('tambah', [RfqController::class, 'create']);
     Route::get('report/{id}', [RfqController::class, 'report_detail']);
     Route::get('{rfq_id}', [RfqController::class, 'show']);
+});
+
+Route::prefix('customer')->group(function () {
+    Route::get('', [CustomerController::class, 'index']);
+    Route::get('tambah', [CustomerController::class, 'tambah']);
 });
 
 Route::prefix('sales')->group(function () {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_perusahaan');
             $table->string('npwp')->nullable();
             $table->string('nomor_telepon');
+            $table->string('nomor_telepon_mobile');
             $table->unsignedBigInteger('provinsi');
             $table->unsignedBigInteger('kota');
             $table->string('email');

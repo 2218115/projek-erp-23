@@ -31,7 +31,8 @@ class BahanBakuController extends Controller
 
     public function destroy($bahan_baku_id)
     {
-        dd($bahan_baku_id);
+        BahanBaku::find($bahan_baku_id)->delete();
+        return redirect('/bahan-baku');
     }
 
     public function report()

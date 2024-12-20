@@ -24,16 +24,16 @@
                         @enderror
 
                         <div class="select-items-container card" x-show="open" x-transition
-                            x-on:click.outside="open = false">
+                            x-on:click.outside="open = false" style="z-index: 9999;">
                             <div>
                                 <div class="select-item" wire:loading>
                                     Memuat...
                                 </div>
 
-                                <div wire:loading:remove style="display: none">
+                                <div wire:loading:remove>
                                     @if ($produk_list->count() > 0)
                                         @foreach ($produk_list as $produk)
-                                            <div class="select-item"
+                                            <div class="select-item" style="z-index: 999999"
                                                 x-on:click="open = false; 
                                                 $wire.dispatch('bom_item_change');
                                                 @this.set('produk', '{{ $produk->id }}'); 
@@ -143,7 +143,7 @@
                                             Memuat...
                                         </div>
 
-                                        <div wire:loading:remove style="display: none">
+                                        <div wire:loading:remove>
                                             @if ($bahan_baku_list ? $bahan_baku_list->count() > 0 : false)
                                                 @foreach ($bahan_baku_list as $bahan_baku)
                                                     <div class="select-item"
