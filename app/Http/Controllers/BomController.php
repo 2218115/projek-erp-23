@@ -40,4 +40,13 @@ class BomController extends Controller
         ]);
         return $pdf->download('bom-list.pdf');
     }
+
+    public function report_detail($id)
+    {
+        $bom = Bom::find($id);
+        $pdf = Pdf::loadView('bom.report-detail', [
+            'bom' => $bom,
+        ]);
+        return $pdf->download($id . '-bom.pdf');
+    }
 }

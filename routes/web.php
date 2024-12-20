@@ -56,6 +56,7 @@ Route::prefix('bom')->group(function () {
     Route::get('/', [BomController::class, 'index']);
     Route::get('tambah', [BomController::class, 'create']);
     Route::get('report', [BomController::class, 'report']);
+    Route::get('report/{id}', [BomController::class, 'report_detail']);
     Route::get('{bom_id}', [BomController::class, 'show']);
     Route::get('{bom_id}/edit', [BomController::class, 'edit']);
     Route::delete('{bom_id}', [BomController::class, 'destroy']); // TODO: soft delete

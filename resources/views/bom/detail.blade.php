@@ -8,10 +8,17 @@
         </ol>
     </nav>
 
+
     <div class="row">
         <div class="col">
             <div class="card w-100">
                 <div class="card-body">
+                    <div class="d-flex justify-content-end mb-4">
+                        <a href="{{url('bom/report/' . $bom->id)}}" type="submit" class="btn btn-danger btn-md">
+                            <i class="ti ti-book"></i> Cetak Bom
+                        </a>
+                    </div>
+
                     <form>
                         @csrf
                         <div class="row">
