@@ -2,9 +2,15 @@
     <div class="d-flex justify-content-between">
         <input type="search" name="search" class="form-control w-50" placeholder="Cari BOM" wire:model.live="search">
 
-        <a href="{{ url('bom/tambah') }}" class="btn btn-success">
-            <i class="ti ti-plus-circle"></i> Buat BOM
-        </a>
+        <div class="d-flex gap-2">
+            <a href="{{ url('bom/tambah') }}" class="btn btn-success">
+                <i class="ti ti-plus-circle"></i> Buat BOM
+            </a>
+
+            <a href="{{ url('bom/report') }}" class="btn btn-secondary">
+                <i class="ti ti-plus-circle"></i> Report
+            </a>
+        </div>
     </div>
     <div class="table-responsive mt-4">
         <table class="table table-hover">

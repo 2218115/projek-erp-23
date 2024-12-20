@@ -6,9 +6,12 @@ use App\Models\RFQ;
 use App\Models\RFQDetail;
 use App\Models\RFQStatus;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RfqList extends Component
 {
+    use WithPagination;
+
     public $search;
     public $status;
 

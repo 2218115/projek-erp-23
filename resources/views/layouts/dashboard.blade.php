@@ -109,6 +109,30 @@
                             </a>
                         </li>
 
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Sales</span>
+                        </li>
+
+                        <li class="sidebar-item {{ Request::is('customers*') ? 'selected' : '' }}">
+                            <a class="sidebar-link" href="{{ url('customers') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-clipboard"></i>
+                                </span>
+                                <span class="hide-menu">Customers</span>
+                            </a>
+                        </li>
+
+                       <li class="sidebar-item {{ Request::is('sales*') ? 'selected' : '' }}">
+                            <a class="sidebar-link" href="{{ url('sales') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-clipboard"></i>
+                                </span>
+                                <span class="hide-menu">Sales</span>
+                            </a>
+                        </li>
+
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -6,6 +6,7 @@ use App\Models\KategoriProduk;
 use App\Models\Produk;
 use App\Models\UkuranProduk;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProdukController extends Controller
 {
@@ -42,5 +43,14 @@ class ProdukController extends Controller
         Produk::destroy($produk_id);
 
         return redirect('/produk');
+    }
+
+    public function report()
+    {
+        $produk = Produk::with(['kategori_produk', 'ukuran'])->get();
+        $pdf = Pdf::loadView('produk.report', [
+            'produk' => $produk,
+        ]);
+        return $pdf->download('produk.pdf');
     }
 }

@@ -17,7 +17,7 @@
 
         <div class="">
             <a href="{{ url('rfq/tambah') }}" class="btn btn-success">
-                <i class="ti ti-plus-circle"></i> Buat MO
+                <i class="ti ti-plus-circle"></i> Buat RFQ
             </a>
         </div>
     </div>

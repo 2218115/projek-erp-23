@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BahanBaku;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class BahanBakuController extends Controller
@@ -31,5 +32,14 @@ class BahanBakuController extends Controller
     public function destroy($bahan_baku_id)
     {
         dd($bahan_baku_id);
+    }
+
+    public function report()
+    {
+        $bahan_baku = BahanBaku::all();
+        $pdf = Pdf::loadView('bahan-baku.report', [
+            'bahan_baku' => $bahan_baku,
+        ]);
+        return $pdf->download('produk.pdf');
     }
 }

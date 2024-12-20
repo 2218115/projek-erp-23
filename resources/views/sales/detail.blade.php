@@ -3,9 +3,8 @@
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('mo') }}">Mo</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('mo') }}">Manufacturing Order</a></li>
             <li class="breadcrumb-item"><a href="{{ url('mo') . '/' . $mo_id }}"> #{{ $mo_id }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('mo') . '/' . $mo_id . '/edit' }}"> Edit</a></li>
         </ol>
     </nav>
 
@@ -13,9 +12,11 @@
         <div class="col">
             <div class="card w-100">
                 <div class="card-body">
-                    @livewire('mo-form', [
+
+                    @livewire('mo-detail-form', [
                         'mo_id' => $mo_id,
                     ])
+
                 </div>
             </div>
         </div>
