@@ -71,8 +71,9 @@ Route::prefix('vendor')->group(function () {
 });
 
 Route::prefix('rfq')->group(function () {
-    Route::get('/', [RfqController::class, 'index']);
-    Route::get('/tambah', [RfqController::class, 'create']);
+    Route::get('', [RfqController::class, 'index']);
+    Route::get('tambah', [RfqController::class, 'create']);
+    Route::get('report/{id}', [RfqController::class, 'report_detail']);
     Route::get('{rfq_id}', [RfqController::class, 'show']);
 });
 

@@ -251,6 +251,7 @@
             @endif
         </div>
     </form>
+    <a href="{{ url('/rfq/report/' . $rfq_id) }}" class="btn btn-secondary w-48">Cetak RFQ</a>
 
     <!-- Tabel BOM -->
     <div class="mt-4">

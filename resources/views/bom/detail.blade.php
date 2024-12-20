@@ -14,7 +14,7 @@
             <div class="card w-100">
                 <div class="card-body">
                     <div class="d-flex justify-content-end mb-4">
-                        <a href="{{url('bom/report/' . $bom->id)}}" type="submit" class="btn btn-danger btn-md">
+                        <a href="{{ url('bom/report/' . $bom->id) }}" type="submit" class="btn btn-secondary btn-md">
                             <i class="ti ti-book"></i> Cetak Bom
                         </a>
                     </div>
