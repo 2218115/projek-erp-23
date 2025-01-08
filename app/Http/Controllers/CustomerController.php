@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,8 +14,17 @@ class CustomerController extends Controller
 
     public function tambah()
     {
-        return view('customer.tambah', [
-            'customer_id' => 1,
-        ]);
+        return view('customer.tambah');
+    }
+
+    public function edit($id)
+    {
+        return view('customer.edit');
+    }
+
+    public function show($id)
+    {
+        $customer = Customer::with(['r_provinsi', 'r_kota'])->find($id);
+        return view('customer.detail', ['customer' => $customer]);
     }
 }

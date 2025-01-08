@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Vermaysha\Wilayah\Models\City;
 use Vermaysha\Wilayah\Models\Province;
 
@@ -23,13 +24,13 @@ class Customer extends Model
         'jalan',
     ];
 
-    public function r_provinsi()
+    public function r_provinsi(): HasOne
     {
-        return $this->belongsTo(Province::class, 'provinsi');
+        return $this->hasOne(Province::class, 'code', 'provinsi');
     }
 
-    public function r_kota()
+    public function r_kota(): HasOne
     {
-        return $this->belongsTo(City::class, 'kota');
+        return $this->hasOne(City::class, 'code', 'kota');
     }
 }

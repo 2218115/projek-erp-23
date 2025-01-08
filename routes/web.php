@@ -81,6 +81,8 @@ Route::prefix('rfq')->group(function () {
 Route::prefix('customer')->group(function () {
     Route::get('', [CustomerController::class, 'index']);
     Route::get('tambah', [CustomerController::class, 'tambah']);
+    Route::get('{id}/edit', [CustomerController::class, 'edit']);
+    Route::get('{id}', [CustomerController::class, 'show']);
 });
 
 Route::prefix('sales')->group(function () {

@@ -27,7 +27,7 @@ class RfqController extends Controller
     {
         $rfq = RFQ::find($id);
 
-        $nama_perusahaan = "PT KELOMPOK ERP32-MEBEL JAYA";
+        $nama_perusahaan = "PT KELOMPOK ERP23-MEBEL JAYA";
         $alamat_penerima = "Jln. Raya Karanglo Km.2 Malang, Jawa Timur, 65145, Indonesia. Telp. 0341-417636. Fax. 0341-417634 Indonesia.";
         $alamat_pengirim = $rfq->vendor->r_provinsi->name . ', ' . $rfq->vendor->r_kota->name . ', ' . $rfq->jalan;
 

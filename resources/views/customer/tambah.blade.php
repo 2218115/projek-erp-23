@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    @livewire('customer-form')
+    @livewire('customer-form', [
+        'customer_id' => null,
+    ])
 @endsection
